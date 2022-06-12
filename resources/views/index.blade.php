@@ -27,184 +27,121 @@
             <h2>Participating Stores</h2>
         </div>
         <div class="container">
+            {{-- pastikan master : admin utama --}}
+            @if (Auth::user())
+                @if (Auth::user()->role == "master")
+                    <a class="btn btn-kenyang" href=" {{ route('restaurant.create') }} ">Tambah restoran</a>
+                @endif
+            @endif
+
             <div class="row">
                 <div class="col-md-12">
                         <h2 class="righteous"><span><img src="{{ asset('assets/img/line.png')}}" alt=""></span> Banyak Promo</h2>
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-3">
-                    <a href="#">
-                        <div class="card">
-                    
-                                <img src="{{ asset('assets/img/kembung.jpg')}}" class="card-img-top" alt="...">
-                            
-                            
-                            <div class="card-body">
-                              <p class="card-text p-300">0.5 km</p>
-                              <h5 class="card-title p-700">ikan kembung, Klaten</h5>
-                              <p class="card-text"><span><img class="star" src="{{ asset('assets/img/ic-star.png')}}" alt=""></span> 4.9</p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                
-                <div class="col-md-3">
-                    <a href="#">
-                        <div class="card">
-                            <img src="img/salmoo.jpeg" class="card-img-top" alt="...">
-                            <div class="card-body">
-                              <p class="card-text p-300">0.5 km</p>
-                              <h5 class="card-title p-700">ikan salmon, Klaten</h5>
-                              <p class="card-text"><span><img class="star" src="img/ic-star.png" alt=""></span> 4.9</p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                
-                <div class="col-md-3">
-                    <a href="#">
-                        <div class="card">
-                            <img src="img/scallop.jpeg" class="card-img-top" alt="...">
-                            <div class="card-body">
-                              <p class="card-text p-300">0.5 km</p>
-                              <h5 class="card-title p-700">scallop, Klaten</h5>
-                              <p class="card-text"><span><img class="star" src="img/ic-star.png" alt=""></span> 4.9</p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                
-                <div class="col-md-3">
-                    <a href="#">
-                        <div class="card">
-                            <img src="img/udang.jpg" class="card-img-top" alt="...">
-                            <div class="card-body">
-                              <p class="card-text p-300">0.5 km</p>
-                              <h5 class="card-title p-700">Udang, Klaten</h5>
-                              <p class="card-text"><span><img class="star" src="img/ic-star.png" alt=""></span> 4.9</p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
+                @foreach ($restaurantPromo as $restaurant)
+                    <div class="col-md-3">
+                        <a href="{{ route('restaurant.show', $restaurant->slug) }}">
+                            <div class="card">
+                                <img src="{{asset('storage/'. $restaurant->picture)}}" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <p class="card-text p-300">0.5 km</p>
+                                    <h5 class="card-title p-700">{{ $restaurant->name }}</h5>
+                                    <p class="card-text"><span><img class="star" src="{{ asset('assets/img/ic-star.png')}}" alt=""></span> {{ $restaurant->rating }}</p>
+                                </div>
+                                @if (Auth::user())
+                                    @if (Auth::user()->role == 'master')
+                                    <div class="d-flex mt-3">  
+                                        <a href=" {{ route('restaurant.edit', $restaurant->slug) }} " class="btn btn-kenyang me-2">Edit</a>
+                                        
+                                        <form action="{{ route('restaurant.delete', $restaurant->slug) }} " method="post">
+                                            @method('delete')
+                                            @csrf
 
+                                            <button type="submit" class="btn btn-kenyang">Hapus</button>
+                                        </form>
+                                    </div> 
+                                    @endif
+                                @endif
+                            </div>
+                        </a>
+                    </div>
+                @endforeach
+            </div>
+                
             <div class="row">
                 <div class="col-md-12">
-                        <h2 class="righteous"><span><img src="img/line.png" alt=""></span> Toko Ter-Populer</h2>
+                        <h2 class="righteous"><span><img src="{{ asset('assets/img/line.png')}}" alt=""></span> Toko Ter-Populer</h2>
                 </div>
             </div>
             <div class="row">
+                @foreach ($restaurantPopuler as $restaurant)
                 <div class="col-md-3">
-                    <a href="#">
+                    <a href="{{ route('restaurant.show', $restaurant->slug) }}">
                         <div class="card">
-                            <img src="img/cumi.jpg" class="card-img-top" alt="...">
+                            <img src="{{asset('storage/'. $restaurant->picture)}}" class="card-img-top" alt="...">
                             <div class="card-body">
-                              <p class="card-text p-300">0.5 km</p>
-                              <h5 class="card-title p-700">cumi, Klaten</h5>
-                              <p class="card-text"><span><img class="star" src="img/ic-star.png" alt=""></span> 4.9</p>
+                                <p class="card-text p-300">0.5 km</p>
+                                <h5 class="card-title p-700">{{ $restaurant->name }}</h5>
+                                <p class="card-text"><span><img class="star" src="{{ asset('assets/img/ic-star.png')}}" alt=""></span> {{ $restaurant->rating }}</p>
                             </div>
-                        </div>
-                    </a>
-                </div>
-                
-                <div class="col-md-3">
-                    <a href="#">
-                        <div class="card">
-                            <img src="img/gurita.jpg" class="card-img-top" alt="...">
-                            <div class="card-body">
-                              <p class="card-text p-300">0.5 km</p>
-                              <h5 class="card-title p-700">gurita, Klaten</h5>
-                              <p class="card-text"><span><img class="star" src="img/ic-star.png" alt=""></span> 4.9</p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
+                            @if (Auth::user())
+                            @if (Auth::user()->role == 'master')
+                            <div class="d-flex mt-3">  
+                                <a href=" {{ route('restaurant.edit', $restaurant->slug) }} " class="btn btn-kenyang me-2">Edit</a>
+                                
+                                <form action="{{ route('restaurant.delete', $restaurant->slug) }} " method="post">
+                                    @method('delete')
+                                    @csrf
 
-                <div class="col-md-3">
-                    <a href="#">
-                        <div class="card">
-                            <img src="img/bakso-ikan.jpg" class="card-img-top" alt="...">
-                            <div class="card-body">
-                              <p class="card-text p-300">0.5 km</p>
-                              <h5 class="card-title p-700">bakso ikan, Klaten</h5>
-                              <p class="card-text"><span><img class="star" src="img/ic-star.png" alt=""></span> 4.9</p>
-                            </div>
+                                    <button type="submit" class="btn btn-kenyang">Hapus</button>
+                                </form>
+                            </div> 
+                            @endif
+                        @endif
+
                         </div>
                     </a>
                 </div>
-                
-                <div class="col-md-3">
-                    <a href="#">
-                        <div class="card">
-                            <img src="img/crab1.jpg" class="card-img-top" alt="...">
-                            <div class="card-body">
-                              <p class="card-text p-300">0.5 km</p>
-                              <h5 class="card-title p-700">Crab Sticke, Klaten</h5>
-                              <p class="card-text"><span><img class="star" src="img/ic-star.png" alt=""></span> 4.9</p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
+                @endforeach
             </div>
-
-            <div class="row">
+ 
+                <div class="row">
                 <div class="col-md-12">
-                        <h2 class="righteous"><span><img src="img/line.png" alt=""></span> Rekomendasi</h2>
+                        <h2 class="righteous"><span><img src="{{ asset('assets/img/line.png')}}" alt=""></span> Rekomendasi</h2>
                 </div>
             </div>
             <div class="row">
+                @foreach ($restaurantRekomendasi as $restaurant)
                 <div class="col-md-3">
-                    <a href="#">
+                    <a href="{{ route('restaurant.show', $restaurant->slug) }}">
                         <div class="card">
-                            <img src="img/kakap.png" class="card-img-top" alt="...">
+                            <img src="{{asset('storage/'. $restaurant->picture)}}" class="card-img-top" alt="...">
                             <div class="card-body">
-                              <p class="card-text p-300">0.5 km</p>
-                              <h5 class="card-title p-700">kakap merah, Klaten</h5>
-                              <p class="card-text"><span><img class="star" src="img/ic-star.png" alt=""></span> 4.9</p>
+                                <p class="card-text p-300">0.5 km</p>
+                                <h5 class="card-title p-700">{{ $restaurant->name }}</h5>
+                                <p class="card-text"><span><img class="star" src="{{ asset('assets/img/ic-star.png')}}" alt=""></span> {{ $restaurant->rating }}</p>
                             </div>
+                            @if (Auth::user())
+                            @if (Auth::user()->role == 'master')
+                            <div class="d-flex mt-3">  
+                                <a href=" {{ route('restaurant.edit', $restaurant->slug) }} " class="btn btn-kenyang me-2">Edit</a>
+                                
+                                <form action="{{ route('restaurant.delete', $restaurant->slug) }} " method="post">
+                                    @method('delete')
+                                    @csrf
+
+                                    <button type="submit" class="btn btn-kenyang">Hapus</button>
+                                </form>
+                            </div> 
+                            @endif
+                        @endif
+
                         </div>
                     </a>
                 </div>
-                
-                <div class="col-md-3">
-                    <a href="#">
-                        <div class="card">
-                            <img src="img/kerang-dara1.jpg" class="card-img-top" alt="...">
-                            <div class="card-body">
-                              <p class="card-text p-300">0.5 km</p>
-                              <h5 class="card-title p-700">Kerang Dara, Klaten</h5>
-                              <p class="card-text"><span><img class="star" src="img/ic-star.png" alt=""></span> 4.9</p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                
-                <div class="col-md-3">
-                    <a href="#">
-                        <div class="card">
-                            <img src="img/kerang-ijo.jpg" class="card-img-top" alt="...">
-                            <div class="card-body">
-                              <p class="card-text p-300">0.5 km</p>
-                              <h5 class="card-title p-700">kerang hijau, Klaten</h5>
-                              <p class="card-text"><span><img class="star" src="img/ic-star.png" alt=""></span> 4.9</p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                
-                <div class="col-md-3">
-                    <a href="#">
-                        <div class="card">
-                            <img src="img/kerang-simping.jpg" class="card-img-top" alt="...">
-                            <div class="card-body">
-                              <p class="card-text p-300">0.5 km</p>
-                              <h5 class="card-title p-700">kerang simping, Klaten</h5>
-                              <p class="card-text"><span><img class="star" src="img/ic-star.png" alt=""></span> 4.9</p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
