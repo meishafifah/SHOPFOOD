@@ -1,0 +1,260 @@
+
+.biru {
+    color: #78938A;
+}
+
+.bold {
+    font-weight: bolder;
+}
+
+.navbar {
+    background-color: #78938A!important;
+}
+
+.navbar .brand{
+    font-family: righteous;
+}
+
+
+.navbar img{
+    width: 100px;
+    height: 80px;
+
+}
+
+.btn{
+    border-radius: 30px;
+    background-color: #F1DDBF;
+}
+
+body {
+    font-family: p400;
+    font-size: 14px;
+}
+
+body.account{
+    color: white;
+    font-family: p400;
+}
+
+.block-acc{
+    text-align: center;
+    margin: 100px;
+    width: 70%;
+    border-radius: 50px;
+    background-color: #57637A;
+    padding: 80px 100px 80px 100px;
+}
+
+.block-center{
+    text-align: -webkit-center;
+}
+
+.img-acc{
+    width: 25%;
+}
+
+.input{
+    background-color: #92BA92;
+    border-radius: 20px;
+    height: 40px;
+    margin-top: 20px;
+    text-align: left;
+    padding: 5px 20px 5px 20px;
+}
+
+.input input{
+    border: none;
+    outline: none;
+    width: 100%;
+    background-color: #92BA92;
+}
+
+footer{
+    padding: 20px;
+    margin-top: 28PX;
+    background-color:  #78938A;
+    text-align: center;
+    color:black;
+}
+
+.hero {
+    background-color: #57637A;
+    margin: 0;
+}
+
+.hero .col-md-6 {
+    padding: 100px;
+}
+
+.hero .txt h1 {
+    font-size: 50px;
+}
+
+.hero .btn {
+    width: 129px;
+    color: white;
+}
+
+.menu .block-hr {
+    background-color: #78938A;
+    color: black;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    text-align: center;
+    font-family: righteous;
+    margin-bottom: 50px;
+}
+
+.menu .col-md-12{
+    margin-top: 30px;
+}
+
+.menu .star {
+    width: 15px;
+}
+
+.menu .card {
+    border-radius: 30px;
+    background-color: #F1DDBF;
+}
+
+.menu a{
+    text-decoration: none!important;
+
+}
+
+.menu .card-title, .menu .card-text {
+    color: black;
+    font-style: normal;
+}
+
+.menu .card .card-img-top {
+    border-radius: 30px;
+    height: 230px;
+
+}
+
+.toko .w-100 {
+    width: 100%;
+    background-size: cover;
+    height: 290px;
+}
+
+.toko .kupon {
+    background: #F1DDBF;
+    color: black;
+    width: 100%;
+    padding: 5px;
+    border-radius: 15px;
+    text-align: center;
+}
+
+.toko .block-menu {
+    background: #F1DDBF;
+    padding: 20px;
+    border-radius: 30px;
+}
+
+.toko .block-menu h4 {
+    font-family: righteous;
+}
+
+.toko .block-menu .ic-menu {
+    width: 100%;
+    height: 120px;
+    border-radius: 30px;
+}
+
+.toko .block-menu .btn {
+    background: #78938A;
+    border-radius: 10px;
+}
+
+.toko .block-menu .btn img {
+    width: 100%;
+}
+
+.toko .block-menu .col-md-8 {
+    text-align: right;
+    align-self: center;
+}
+
+.toko .block-menu .col-md-8 input {
+    border: none;
+    width: 50px;
+}
+
+.block-white {
+    background-color: #525E75;
+    color: black;
+    border-radius: 30px;
+    padding: 40px;
+    margin-bottom: 30px;
+}
+
+.keranjang .block-white img {
+    width: 100%;
+    border-radius: 30px;
+}
+
+.kanan {
+    text-align: right;
+}
+.btn-keranjang {
+    background-color: #F1DDBF;
+    border-radius: 20px;
+    padding: 10px;
+    width: 100px;
+    height: 45px;
+    margin-right: 10px;
+}
+
+.checkout  .col-md-3 img{
+    width: 220Px;
+    height: 220px;
+    border-radius: 5px;
+}
+
+.checkout .alamat p{
+    margin-bottom: 0rem!important;
+}
+
+.checkout input {
+    width: 100%;
+    border: none;
+    text-align: right;
+    outline-width: 0;
+}
+
+.checkout .pilihan {
+    outline-width: 0!important;
+    border: none;
+}
+
+.checkout .for-btn {
+    background-color: white;
+    color: black;
+    border-radius: 10px;
+    text-align: right;
+    width: 330px;
+}
+.kanan-web {
+    text-align: -webkit-right;
+}
+
+.checkout .for-btn p{
+    margin-bottom: 0rem!important;
+}
+
+
+.btn-checkout {
+    background-color: #F1DDBF;
+    border-radius: 10px;
+    padding: 10px;
+    height: 45px;
+}
+
+.btn-checkout:hover {
+}
+

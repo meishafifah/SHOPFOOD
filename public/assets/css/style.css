@@ -1,0 +1,234 @@
+
+
+.bold {
+    font-weight: bolder;
+}
+
+.navbar {
+    background-color: #78938A!important;
+}
+
+.navbar .brand{
+    font-family: righteous;
+}
+
+.navbar img{
+    width: 100px;
+    height: 80px;
+
+}
+
+.btn{
+    border-radius: 30px;
+    width: 110px;
+    background-color: #F1DDBF;
+}
+
+body {
+    font-family: p400;
+    font-size: 14px;
+}
+
+body.account{
+    color: white;
+    font-family: p400;
+}
+
+.block-acc{
+    text-align: center;
+    margin: 100px;
+    width: 70%;
+    border-radius: 50px;
+    background-color: #57637A;
+    padding: 80px 100px 80px 100px;
+}
+
+.block-center{
+    text-align: -webkit-center;
+}
+
+.input{
+    background-color: #92BA92;
+    border-radius: 20px;
+    height: 40px;
+    margin-top: 20px;
+    text-align: left;
+    padding: 5px 20px 5px 20px;
+}
+
+.input input{
+    border: none;
+    outline: none;
+    width: 100%;
+    background-color: #92BA92;
+}
+
+
+footer{
+    padding: 20px;
+    margin-top: 28PX;
+    background-color:  #78938A;
+    text-align: center;
+    color:black;
+}
+.img-acc{
+    width: 25%;
+}
+
+.menu{
+    margin: 50px;
+}
+.menu .col-md-12{
+    margin-top: 20px;
+}
+
+.toko .w-100 {
+    width: 100%;
+    background-size: cover;
+    height: 290px;
+}
+
+.menu .block-menu {
+    background: #F1DDBF;
+    padding: 20px;
+    border-radius: 30px;
+}
+
+.menu .block-menu .ic-menu {
+    width: 100%;
+    border-radius: 30px;
+    height: 120px;
+    
+}
+
+.menu .block-menu .btn {
+    background: #78938A;
+    border-radius: 8px;
+    width: 60px;
+    height: 30px;
+}
+
+.col-md-4 .btn p{
+    text-align: center;
+    padding-bottom:200px;
+}
+
+
+.menu .block-menu .col-md-8 {
+    text-align: right;
+    align-self: center;
+}
+
+.menu .block-menu .col-md-8 input {
+    border: none;
+    width: 50px;
+}
+
+.block-white {
+    background-color: #525E75;
+    color: black;
+    border-radius: 30px;
+    padding: 40px;
+}
+
+
+/* .btn-checkout:hover {
+} */
+
+.voucher{
+    width: 100% ;
+    background-color: #78938A;
+    color: black;
+    padding-top: 20px;
+    padding-bottom: 20px;              
+    text-align: center;
+    font-family: righteous;
+    margin-bottom: 40px;
+    
+}
+
+.voucher-input{
+    margin-bottom: 30px;
+}
+
+.col-md-8 p {
+    text-align: left;
+}
+
+.col-md-12 .btn-primary{
+    width: 70px;
+    float:right;
+    margin-right: 50px;
+    margin:15px ;
+    border-radius: 15px;
+    background-color: #525E75;
+}
+
+.mt-3 .btn-primary{
+    width: 70px;
+    float:right;
+    margin-right: 50px;
+    margin:15px ;
+    border-radius: 15px;
+    background-color: #525E75;
+}
+.p-700{ 
+    margin-top: 10px;
+}
+
+.text-Secondary{
+ color:#7C7B7A;
+ font-weight: bold;
+}
+
+.info-admin{
+    margin-left: 20px;
+}
+
+.bulan{
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+input {
+    color: #F1DDBF;
+}
+
+.invoice {
+    margin: 30px;
+    font-family: righteous;
+
+}
+
+.tabel-invoice{
+    margin-bottom: 60px;
+}
+
+.tabel {
+    border: solid #78938A;
+    width: 100%;
+    height: 140px;
+    border-radius: 5px;
+    
+}
+
+.tabel p {
+    margin-left: 20px;
+    margin-top: 10px ;
+    
+}
+.btn-invoice{
+    background-color: #525E75;
+    width: 70px;
+    margin-right: 70px;
+    margin-bottom: 80px;
+    float: right;
+    
+
+}
+
+.plan {
+    background-color: #525E75;
+    width: 100%;
+    height: 330px;
+
+}
