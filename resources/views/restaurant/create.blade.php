@@ -4,6 +4,13 @@
         <form action=" {{ route('restaurant.store') }} " method="post" enctype="multipart/form-data">
             @csrf
             <div class="mb-3">
+                <label for="user_id" class="form-label">User ID</label>
+                <input type="text" class="form-control" name="user_id" id="user_id" placeholder="Input User ID">
+                @error('user_id')
+                    <p class="text-danger small">{{$message}}</p>
+                @enderror
+            </div>
+            <div class="mb-3">
                 <label for="name" class="form-label">Name</label>
                 <input type="text" class="form-control" name="name" id="name" placeholder="Input restaurant name">
                 @error('name')
@@ -27,9 +34,9 @@
             <div class="mb-3">
                 <label for="category" class="form-label">Category</label>
                 <select class="form-control" name="category" id="category">
-                    <option value="promo">Banyak Promo</option>
-                    <option value="populer">Toko Ter-Populer</option>
-                    <option value="rekomendasi">Rekomendasi</option>
+                    <option value="breakfast">Breakfast</option>
+                    <option value="lunch">Lunch</option>
+                    <option value="dinner">Dinner</option>
                 </select>
                 @error('category')
                     <p class="text-danger small">{{$message}}</p>

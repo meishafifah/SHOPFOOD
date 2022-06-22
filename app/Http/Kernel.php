@@ -4,7 +4,8 @@ namespace App\Http;
 
 use App\Http\Middleware\CheckAdmin;
 use App\Http\Middleware\CheckMaster;
-
+use App\Http\Middleware\CheckMasterOrAdmin;
+use App\Http\Middleware\RedirectRestaurant;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -68,5 +69,7 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'CheckMaster' => CheckMaster::class,
         'CheckAdmin' => CheckAdmin::class,
+        'RedirectRestaurant' => RedirectRestaurant::class,
+        'CheckMasterOrAdmin' => CheckMasterOrAdmin::class,
     ];
 }

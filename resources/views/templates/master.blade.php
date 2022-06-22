@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/styleuser.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/font.css') }}">
     <source src="{{ asset('assets/js/bootstrap.min.js') }}" type="">
-    <link rel="icon" href="{{ asset('assets/img/fav-icon.svg') }}" type="image/x-icon">
+    <link rel="icon" href="{{ asset('assets/img/logo-02.svg') }}" type="image/x-icon">
 </head>
 <body class="account">
     <!-- navbar -->
@@ -27,9 +27,6 @@
                     </button>
                     <div class="collapse navbar-collapse" id="navbarNav">
                       <ul class="navbar-nav">
-                        <li class="nav-item">
-                          <a class="nav-link active text-white p400" aria-current="page" href="{{ route('index') }}">Beranda</a>
-                        </li>
                         <li>
                           @guest
                           {{-- belum login register --}}
@@ -48,36 +45,57 @@
                           
                           {{-- user sudah login --}}
                           @if (Auth::user())
+
                             @if (Auth::user()->role == 'master')
+                              <li class="nav-item">
+                                <a class="nav-link active text-white p400" aria-current="page" href="{{ route('index') }}">Beranda</a>
+                              </li>   
+                              {{-- Request --}}
+                              <li class="nav-item">
+                                <a class="nav-link text-white" href="{{ route('request.index') }}">Permintaan</a>
+                              </li>
                               {{-- Voucher --}}
                               <li class="nav-item">
-                                <a class="nav-link text-white" href="#">Voucher</a>
+                                <a class="nav-link text-white" href="{{ route('voucher.index') }}">Voucher</a>
                               </li>
-                              {{-- Akun --}}
+                              {{-- Transaksi --}}
                               <li class="nav-item">
-                                  <a class="nav-link text-white" href="#">Akun</a>
+                                <a class="nav-link text-white" href="#">Transaksi</a>
                               </li>
                             @endif
-                            @if (Auth::user()->role == 'admin')
-                              {{-- Voucher --}}
-                              <li class="nav-item">
-                                <a class="nav-link text-white" href="#">Voucher</a>
-                              </li>
-                              {{-- Akun --}}
-                              <li class="nav-item">
-                                  <a class="nav-link text-white" href="#">Akun</a>
-                              </li>
 
-                            @else
+                            @if (Auth::user()->role == 'admin')
+                              <li class="nav-item">
+                                <a class="nav-link text-white" href="#">Home</a>
+                              </li>
+                            {{-- Voucher --}}
+                              <li class="nav-item">
+                                <a class="nav-link text-white" href="{{ route('voucher.index') }}">Voucher</a>
+                              </li>
+                            {{-- Transaksi --}}
+                              <li class="nav-item">
+                                <a class="nav-link text-white" href="#">Transaksi</a>
+                              </li>
+                            {{-- Akun --}}
+                              <li class="nav-item">
+                                <a class="nav-link text-white" href="{{ route('account.index') }}">Akun</a>
+                              </li>
+                            @endif
+
+                            @if (Auth::user()->role == 'user')
+                              <li class="nav-item">
+                                <a class="nav-link active text-white p400" aria-current="page" href="{{ route('index') }}">Beranda</a>
+                              </li>    
                               {{-- Keranjang --}}
                               <li class="nav-item">
                                 <a class="nav-link text-white" href="#">Keranjang</a>
                               </li>
                               {{-- Akun --}}
                               <li class="nav-item">
-                                  <a class="nav-link text-white" href="#">Akun</a>
+                                  <a class="nav-link text-white" href="{{ route('account.index') }}">Akun</a>
                               </li>
                             @endif
+                            
                           @endif
                             <li class="nav-item">
                               <a class="nav-link text-white" href="#">Hai {{ Auth::user()->name }} 🌝</a>

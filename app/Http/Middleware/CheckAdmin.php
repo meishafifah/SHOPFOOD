@@ -21,6 +21,7 @@ class CheckAdmin
         if (Auth::user() && Auth::user()->role == 'admin') {
             // diizinkan
             return $next($request);
+            // return redirect()->route('restaurant.show', Auth::user()->restaurant->slug);
         }
 
         return redirect()->route('index');

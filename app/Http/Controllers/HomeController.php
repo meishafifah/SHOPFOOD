@@ -25,14 +25,20 @@ class HomeController extends Controller
     
     public function index()
     {
-        $restaurantsPopuler = Restaurant::where('category', 'populer')->get();
-        $restaurantsRekomendasi = Restaurant::where('category', 'rekomendasi')->get();
-        $restaurantsPromo = Restaurant::where('category', 'promo')->get();
+        $searchDatas = null;
+        if (request()->has('search')) {
+            $searchDatas = Restaurant::where('name', 'like',"%".request()->search."%")->get();
+        }
+
+        $restaurantsBreakfast = Restaurant::where('category', 'breakfast')->where('status', 'approved')->get();
+        $restaurantsLunch = Restaurant::where('category', 'lunch')->where('status', 'approved')->get();
+        $restaurantsDinner = Restaurant::where('category', 'dinner')->where('status', 'approved')->get();
 
         return view('index', [
-            'restaurantPopuler' => $restaurantsPopuler,
-            'restaurantRekomendasi' => $restaurantsRekomendasi,
-            'restaurantPromo' => $restaurantsPromo,
+            'restaurantBreakfast' => $restaurantsBreakfast,
+            'restaurantLunch' => $restaurantsLunch,
+            'restaurantDinner' => $restaurantsDinner,
+            'searchDatas' => $searchDatas
         ]);
     }
 }

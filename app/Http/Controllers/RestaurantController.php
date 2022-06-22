@@ -10,8 +10,11 @@ class RestaurantController extends Controller
     //
     public function show(Restaurant $restaurant)
     {
+        $menus = $restaurant->menus;
+
         return view('restaurant.show', [
-            'restaurant' => $restaurant
+            'restaurant' => $restaurant,
+            'menus' => $menus
         ]);
     }
 
@@ -37,6 +40,7 @@ class RestaurantController extends Controller
         $pictureUrl = $picture->store("img/restaurant");
 
         Restaurant::create([
+            'user_id' => request()->user_id,
             'name' => request()->name,
             'slug' => $slug,
             'description' => request()->description,
@@ -46,6 +50,44 @@ class RestaurantController extends Controller
         ]);
 
         return redirect()->route('index');
+    }
+
+    public function edit(Restaurant $restaurant)
+    {
+        return view('restaurant.edit', [
+            'restaurant' => $restaurant
+        ]);
+    }
+
+    public function update(Restaurant $restaurant)
+    {
+        request()->validate([
+            'name' => 'required',
+            'description' => 'required',
+            'rating' => 'required',
+            'category' => 'required'
+        ]);
+        
+        if (request()->file('picture')) {
+            \Storage::delete($restaurant->picture);
+            $picture = request()->file('picture')->store("img/restaurant");
+        } else {
+            $picture = $restaurant->picture;
+        }
+
+        $slug = \Str::slug(request()->name);
+
+        $restaurant->update([
+            'name' => request()->name,
+            'slug' => $slug,
+            'description' => request()->description,
+            'category' => request()->category,
+            'rating' => request()->rating,
+            'picture' => $picture,
+        ]);
+
+        return redirect()->route('index');
+
     }
 
     public function delete(Restaurant $restaurant)

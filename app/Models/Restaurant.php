@@ -10,11 +10,24 @@ class Restaurant extends Model
     use HasFactory;
 
     protected $fillable = [
+        'user_id',
         'name',
         'slug',
         'description',
         'rating',
         'picture',
         'category',
+        'status'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function menus()
+    {
+        return $this->hasMany(Menu::class);
+    }
+
 }
