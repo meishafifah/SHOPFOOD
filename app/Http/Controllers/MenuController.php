@@ -11,6 +11,7 @@ class MenuController extends Controller
     //
     public function create(Restaurant $restaurant)
     {
+        $this->authorize('userRestaurant', $restaurant);
         return view('menu.create', [
             'restaurant' => $restaurant
         ]);
@@ -18,6 +19,7 @@ class MenuController extends Controller
     
     public function store(Restaurant $restaurant)
     {
+        $this->authorize('userRestaurant', $restaurant);
         request()->validate([
             'name' => 'unique:menus|required',
             'description' => 'required',
@@ -40,6 +42,7 @@ class MenuController extends Controller
 
     public function edit(Menu $menu)
     {
+        $this->authorize('userMenu', $menu);
        return view('menu.edit', [
         'menu' => $menu
        ]);
@@ -47,6 +50,7 @@ class MenuController extends Controller
 
     public function update(Menu $menu)
     {
+        $this->authorize('userMenu', $menu);
         request()->validate([
             'name' => 'required',
             'description' => 'required',
@@ -73,6 +77,7 @@ class MenuController extends Controller
 
     public function delete(Menu $menu)
     {
+        $this->authorize('userMenu', $menu);
         $menu->delete();
         return redirect()->back();
     }

@@ -32,7 +32,7 @@
 
             {{-- pastikan master : admin utama --}}
             @if (Auth::user())
-                @if (Auth::user()->role == "master" || Auth::user()->role == 'admin')
+                @if (Auth::user()->role == "master" || Auth::user()->id == $restaurant->user_id)
                     <a class="btn btn-kenyang" href=" {{ route('menu.create', $restaurant->slug) }} ">Tambah menu</a>
                 @endif
             @endif
@@ -55,7 +55,7 @@
                             <p class="mt-2">{{ $menu->description }}</p>
                             <div class="row">
                                 @if (Auth::user())
-                                    @if (Auth::user()->role == 'master' || Auth::user()->role == 'admin')
+                                    @if (Auth::user()->role == "master" || Auth::user()->id == $restaurant->user_id)
                                     <div class="d-flex mt-3">  
                                         <a href=" {{ route('menu.edit', $menu->id) }} " class="btn btn-kenyang me-2">Edit</a>
                                         
