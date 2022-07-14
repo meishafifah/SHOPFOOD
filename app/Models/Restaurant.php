@@ -14,7 +14,7 @@ class Restaurant extends Model
         'name',
         'slug',
         'description',
-        'rating',
+        'sold',
         'picture',
         'category',
         'status'
@@ -28,6 +28,11 @@ class Restaurant extends Model
     public function menus()
     {
         return $this->hasMany(Menu::class);
+    }
+
+    public function invoices()
+    {
+        return $this->hasMany(Invoice::class);
     }
 
 }

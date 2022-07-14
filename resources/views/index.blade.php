@@ -115,7 +115,7 @@
                     <a href="{{ route('restaurant.show', $restaurant->slug) }}">
                         <div class="card">
                             <img src="{{asset('storage/'. $restaurant->picture)}}" class="card-img-top" alt="...">
-                            <div class="card-body">
+                            <div class="card-body text-dark">
                                 <p class="card-text p-300">0.5 km</p>
                                 <h5 class="card-title p-700">{{ $restaurant->name }}</h5>
                                 <p class="card-text"><span><img class="star" src="{{ asset('assets/img/ic-star.png')}}" alt=""></span> {{ $restaurant->rating }}</p>

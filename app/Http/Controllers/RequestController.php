@@ -17,6 +17,9 @@ class RequestController extends Controller
 
     public function create()
     {
+        if (auth()->user()->restaurant != null) {
+            return redirect('/');
+        }
         return view('request.create');
     }
 

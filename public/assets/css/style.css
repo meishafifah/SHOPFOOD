@@ -1,5 +1,45 @@
+.color-cream {
+    background-color: #F1DDBF!important;
+}
+
+.color-blue {
+    background-color: #525E75!important;
+}
+
+/* input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active{
+    background-color: unset !important;
+}
+
+input:-webkit-autofill{
+    -webkit-text-fill-color: #F1DDBF !important;
+} */
+
+.table {
+    --bs-table-hover-color: none!important;
+}
+
+.toko .row .col-md-4 .button-keranjang {
+    margin-right: 30000px;
+}
+
+.no-btn {
+    border: none;
+    background-color: transparent;
+}
+
+.b-0 {
+    bottom: 0px;
+}
+
 .text-dark {
     color: #525E75;
+}
+
+.text-white {
+    color: white;
 }
 
 .bold {

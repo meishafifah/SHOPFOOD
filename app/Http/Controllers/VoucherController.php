@@ -24,13 +24,26 @@ class VoucherController extends Controller
     {
         request()->validate([
             'name' => 'unique:restaurants|required',
-            'diskon' => 'required'
+            'diskon' => 'required',
+            'start' => 'required',
+            'end' => 'required',
+            'pemakaian' => 'required',
         ]);
+
+        $start = request()->start;
+        $end = request()->end;
+        // $start = explode("-",request()->start);
+        // $end = explode("-",request()->end);
 
         Voucher::create([
             'name' => request()->name,
-            'diskon' => request()->diskon
+            'diskon' => request()->diskon,
+            'start' => $start,
+            'end' => $end,
+            'pemakaian' => request()->pemakaian,
         ]);
+
+        $pemakaian = Voucher::whereMonth('start', $end[0])->whereDate('start', $end[1])->get();
 
         return redirect()->route('voucher.index');
     }
@@ -45,13 +58,19 @@ class VoucherController extends Controller
     public function update(Voucher $voucher)
     {
         request()->validate([
-            'name' => 'required',
-            'diskon' => 'required'
+            'name' => 'unique:restaurants|required',
+            'diskon' => 'required',
+            'start' => 'required',
+            'end' => 'required',
+            'pemakaian' => 'required',
         ]);
         
         $voucher->update([
             'name' => request()->name,
             'diskon' => request()->diskon,
+            $start = 'start' => request()->start,
+            $end = 'end' => request()->end,
+            'pemakaian' => request()->pemakaian,
         ]);
 
         return redirect()->route('voucher.index');

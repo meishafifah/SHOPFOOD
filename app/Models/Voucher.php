@@ -11,6 +11,9 @@ class Voucher extends Model
 
     protected $fillable = [
         'name',
-        'diskon'
+        'diskon',
+        'start',
+        'end',
+        'pemakaian'
     ];
 }

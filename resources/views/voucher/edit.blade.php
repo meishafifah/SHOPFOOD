@@ -19,6 +19,24 @@
                     <p class="text-danger small">{{$message}}</p>
                 @enderror
             </div>
+            <div class="mb-3">
+                <label class="form-label">Masa Berlaku</label>
+                <div class="row">
+                    <div class="col-md-2">
+                        <input class="form-control" type="date" name="start" id="start" value="{{ $voucher->start }}">
+                    </div>
+                    <div class="col-md-2">
+                        <input class="form-control" type="date" name="end" id="end" value="{{ $voucher->end }}">
+                    </div>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="pemakaian" class="form-label">Batas Pemakaian</label>
+                <input type="number" class="form-control" name="pemakaian" id="pemakaian" placeholder="Input restaurant pemakaian" value="{{ $voucher->pemakaian }}">
+                @error('pemakaian')
+                    <p class="text-danger small">{{$message}}</p>
+                @enderror
+            </div>
             <button class="btn btn-kenyang" type="submit">Submit</button>
         </form>
     </div>

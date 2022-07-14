@@ -28,7 +28,15 @@
                 </div>
             </div>
 
-            <hr>
+            <hr class="mb-4 text-dark">
+            
+            @if (session()->has('message'))
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    {{ session()->get('message') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
+
 
             {{-- pastikan master : admin utama --}}
             @if (Auth::user())
@@ -41,7 +49,7 @@
             <div class="row mt-5">
                 @foreach ($menus as $item => $menu) 
                     <div class="col-md-4">
-                        <div class="block-menu">
+                        <div class="block-menu text-dark">
                             <div class="row">
                                 <div class="col-md-6">
                                     <img class="ic-menu" src="{{asset('storage/'.$menu->picture)}}" alt="">
@@ -49,7 +57,7 @@
                                 <div class="col-md-6 align-self-center">
                                     <h4>{{ $menu->name }}</h4>
                                     <br>
-                                    <h4 class="biru">{{ $menu->price }}</h4>
+                                    <h4 class="biru">RP {{ $menu->price }}</h4>
                                 </div>
                             </div>
                             <p class="mt-2">{{ $menu->description }}</p>
@@ -67,16 +75,31 @@
                                         </form>
                                     </div> 
                                     @else 
-                                        <div class="col-md-8">
-                                            <img src="img/ic-minus.png" alt="">
-                                            <input type="number" >
-                                            <img src="img/ic-plus.png" alt="">
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="btn">
-                                                <img src="img/ic-cart.png" alt="">
+                                    <form action="{{route('addToCart', [$restaurant->id, $menu->id])}}" method="post">
+                                        @csrf
+                                        <div class="row">
+                                                <div class="col-md-8">
+                                                    <div class="d-flex justify-content-end">
+                                                        <div class="no-btn" onclick="decrement({{$item}})">
+                                                            <img src="{{asset('assets/img/ic-minus.png')}}" alt="">
+                                                        </div>
+
+                                                        <input class="text-center text-dark" id="quantity{{$item}}" name="quantity" type="number" min=1 value="1">
+                                                        
+                                                        <div class="no-btn" onclick="increment({{$item}})">
+                                                            <img src="{{asset('assets/img/ic-plus.png')}}" alt="">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="button-keranjang">
+                                                        <button type="submit" class="btn">
+                                                            <img src="{{asset('assets/img/ic-cart.png')}}" alt="">
+                                                        </button>
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
+                                        </form>
                                     @endif
                                 @endif
                             </div>
@@ -86,4 +109,14 @@
             </div>
         </div>
     </section>
+
+    <script>
+        function increment(urutan) {
+            document.getElementById(`quantity${urutan}`).stepUp();
+        }
+        function decrement(urutan) {
+            document.getElementById(`quantity${urutan}`).stepDown();
+        }
+    </script>
+
 @endsection

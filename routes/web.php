@@ -1,10 +1,14 @@
 <?php
 
 use App\Http\Controllers\AccountController;
+use App\Http\Controllers\BuyController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\RequestController;
 use App\Http\Controllers\RestaurantController;
+use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\VoucherController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -66,5 +70,29 @@ Route::middleware('auth')->group(function(){
     Route::prefix('account')->group(function(){
         Route::get('', [AccountController::class, 'index'])->name('account.index');
     });
+
+    Route::prefix('cart')->group(function(){
+        Route::get('', [BuyController::class, 'index'])->name('cart.index');
+        Route::post('add-to-cart/{restaurant:id}/{menu:id}', [BuyController::class, 'addToCart'])->name('addToCart');
+        Route::put('update/{cart:id}', [BuyController::class, 'update'])->name('cart.update');
+        Route::delete('delete/{cart:id}', [BuyController::class, 'delete'])->name('cart.delete');
+
+        Route::get('checkout', [BuyController::class, 'checkout'])->name('cart.checkout');
+    });
+
+    Route::prefix('invoice')->group(function(){
+        Route::post('create-invoice', [BuyController::class, 'createIinvoice'])->name('create.invoice');
+        Route::get('show-invoice', [BuyController::class, 'showInvoice'])->name('show.invoice');    
+    });
+
+    Route::prefix('transaction')->group(function() {
+        Route::get('endpointdata', [TransactionController::class, 'endPointData'])->name('transaction.endPointData');
+        Route::get('', [TransactionController::class, 'index'])->name('transaction.index');
+        Route::post('', [TransactionController::class, 'filter'])->name('transaction.filter');
+
+        Route::get('invoice/show/{invoice:id}', [TransactionController::class, 'showInvoice'])->name('transaction.showInvoice');
+        Route::post('invoice/changeStatusInvoice/{invoice:id}/{status}', [TransactionController::class, 'changeStatusInvoice'])->name('changeStatusInvoice');
+    });
+
 
 });

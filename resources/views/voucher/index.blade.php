@@ -13,6 +13,8 @@
                 <th scope="col">No</th>
                 <th scope="col">Nama Voucher</th>
                 <th scope="col">Potongan Harga</th>
+                <th scope="col">Masa Berlaku</th>
+                <th scope="col">Batas Pemakaian</th>
                 @if (Auth::user()->role == 'master')
                     <th scope="col">Action</th>
                 @endif
@@ -24,6 +26,8 @@
                 <th scope="row">1</th>
                 <td>{{ $voucher->name }}</td>
                 <td>{{ $voucher->diskon }}</td>
+                <td>{{ $voucher->start }} sampai {{ $voucher->end }}</td>
+                <td>{{ $voucher->pemakaian }}</td>
                 @if (Auth::user()->role == 'master')
                     <td class="d-flex">
                         <a class="btn btn-kenyang" href="{{ route('voucher.edit', $voucher->id) }}">Edit</a>
